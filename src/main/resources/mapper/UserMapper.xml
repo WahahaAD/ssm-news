@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespance:sql隔离 -->
+<mapper namespace="com.bawei.dao.UserMapper">
+	<select id="selectByName" parameterType="String" resultType="user">
+		select * from t_user where name=#{name}
+	</select>
+	<insert id="add" parameterType="User">
+		insert into t_user(name,username,password,birthday,sex,hobby,idcard,phone,email,introduce,picture,address)
+         value(#{name},#{username},#{password},#{birthday},#{sex},#{hobby},#{idcard},#{phone},#{email},#{introduce},#{picture},#{address})
+	</insert>
+	<select id="login" parameterType="user" resultType="user">
+		select * from t_user where name=#{name} and password=#{password}
+	</select>
+	<select id="selectAllUser" resultType="user">
+		select * from t_user
+	</select>
+</mapper>
